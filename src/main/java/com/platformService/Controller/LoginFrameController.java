@@ -41,6 +41,8 @@ public class LoginFrameController {
             //TODO add user and password information form DB
             if(login.getText().equals("user") && Arrays.equals(password.getPassword(), "user".toCharArray())){
                 JOptionPane.showMessageDialog(loginFrame,"Login success");
+                CustomerFrameController customerFrameController = new CustomerFrameController();
+                customerFrameController.ShowCustomerFrameWindow();
             } else {
                 JOptionPane.showMessageDialog(loginFrame,"Login fail \n try again");
 
