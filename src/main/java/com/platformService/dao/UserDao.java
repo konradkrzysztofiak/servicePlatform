@@ -32,7 +32,6 @@ public class UserDao implements DAO<User> {
         List<User> userList = new ArrayList<>();
         while (resultSet.next()){
             userList.add(new User(
-                    resultSet.getInt("id"),
                     resultSet.getString("name"),
                     resultSet.getString("pass"),
                     resultSet.getString("email")));
