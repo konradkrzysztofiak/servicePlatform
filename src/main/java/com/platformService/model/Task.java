@@ -34,4 +34,9 @@ public class Task {
     public int getIdStatus() {
         return idStatus;
     }
+
+    @Override
+    public String toString() {
+        return this.porductName + " " + this.user_id +" "+ this.userDesc + " " + this.serviceDesc + this.idStatus;
+    }
 }
