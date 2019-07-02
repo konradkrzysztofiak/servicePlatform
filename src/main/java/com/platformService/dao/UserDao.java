@@ -43,10 +43,11 @@ public class UserDao implements DAO<User> {
     }
 
     @Override
-    public void update(User user) throws SQLException {
+    public void update(User user, int index) throws SQLException {
         preparedStatement = sqlImplementation.prepareQuery("Update users Set name = ?, pass = ?, email = ? Where id = ?");
         preparedStatement.setString(1,user.getUserName());
         preparedStatement.setString(2,user.getPassword());
         preparedStatement.setString(3,user.geteMail());
+        preparedStatement.setInt(4,index);
     }
 }
