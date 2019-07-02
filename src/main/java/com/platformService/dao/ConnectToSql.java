@@ -1,4 +1,4 @@
-package com.platformService.DAO;
+package com.platformService.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -27,3 +27,5 @@ public class ConnectToSql {
     }
 
 }
+
+
