@@ -4,7 +4,6 @@ import com.platformService.view.CustomerFrame;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,17 +31,20 @@ public class CustomerFrameController {
     private void initComponents() {
         customerFrame = new CustomerFrame();
         DbTable = customerFrame.getDbTable();
-        DbTable.setModel(fillTable());
+        DbTable.setModel(setTableHeader());
         descriptionField = customerFrame.getDescriptionField();
         IdField = customerFrame.getIdField();
         updateButton = customerFrame.getUpdateButton();
     }
 
-    private DefaultTableModel fillTable(){
+    private DefaultTableModel setTableHeader(){
         DefaultTableModel model = new DefaultTableModel();;
 
-        model.addColumn("Col1");
-        model.addColumn("Col2");
+        model.addColumn("Id");
+        model.addColumn("Product");
+        model.addColumn("User Description");
+        model.addColumn("Status");
+
 
         return model;
     }
