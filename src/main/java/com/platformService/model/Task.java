@@ -1,14 +1,14 @@
 package com.platformService.model;
 
 public class Task {
-    private final String porduct_name;
+    private final String porductName;
     private final int user_id;
-    private final String userDesc;
-    private final String serviceDesc;
-    private  int idStatus;
+    private String userDesc;
+    private String serviceDesc;
+    private int idStatus;
 
-    public Task(String porduct_name, int user_id, String userDesc, String serviceDesc, int idStatus) {
-        this.porduct_name = porduct_name;
+    public Task(String porductName, int user_id, String userDesc, String serviceDesc, int idStatus) {
+        this.porductName = porductName;
         this.user_id = user_id;
         this.userDesc = userDesc;
         this.serviceDesc = serviceDesc;
@@ -16,7 +16,7 @@ public class Task {
     }
 
     public String getPorduct_name() {
-        return porduct_name;
+        return porductName;
     }
 
     public int getUser_id() {
