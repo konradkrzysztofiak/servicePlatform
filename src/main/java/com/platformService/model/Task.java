@@ -1,14 +1,14 @@
 package com.platformService.model;
 
 public class Task {
-    private final String porductName;
+    private final String productName;
     private final int user_id;
     private String userDesc;
     private String serviceDesc;
     private int idStatus;
 
-    public Task(String porductName, int user_id, String userDesc, String serviceDesc, int idStatus) {
-        this.porductName = porductName;
+    public Task(String productName, int user_id, String userDesc, String serviceDesc, int idStatus) {
+        this.productName = productName;
         this.user_id = user_id;
         this.userDesc = userDesc;
         this.serviceDesc = serviceDesc;
@@ -16,7 +16,7 @@ public class Task {
     }
 
     public String getPorduct_name() {
-        return porductName;
+        return productName;
     }
 
     public int getUser_id() {
@@ -37,6 +37,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return this.porductName + " " + this.user_id +" "+ this.userDesc + " " + this.serviceDesc + this.idStatus;
+        return this.productName + " " + this.user_id + " " + this.userDesc + " " + this.serviceDesc + this.idStatus;
     }
 }
