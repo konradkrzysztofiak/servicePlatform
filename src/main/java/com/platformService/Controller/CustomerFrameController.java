@@ -1,11 +1,16 @@
 package com.platformService.Controller;
 
+import com.platformService.dao.TaskDao;
+import com.platformService.model.Task;
 import com.platformService.view.CustomerFrame;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.List;
 
 public class CustomerFrameController {
     private CustomerFrame customerFrame;
@@ -20,7 +25,7 @@ public class CustomerFrameController {
         initListeners();
     }
 
-    public void ShowCustomerFrameWindow(){
+    public void ShowCustomerFrameWindow() {
         customerFrame.setVisible(true);
     }
 
@@ -31,23 +36,49 @@ public class CustomerFrameController {
     private void initComponents() {
         customerFrame = new CustomerFrame();
         DbTable = customerFrame.getDbTable();
-        DbTable.setModel(setTableHeader());
+        try {
+            DbTable.setModel(UpdateDataTable(new TaskDao().read()));
+            DbTable.setEnabled(false);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         descriptionField = customerFrame.getDescriptionField();
         IdField = customerFrame.getIdField();
         updateButton = customerFrame.getUpdateButton();
     }
 
-    private DefaultTableModel setTableHeader(){
-        DefaultTableModel model = new DefaultTableModel();;
+    private String[] setTableHeader() {
 
-        model.addColumn("Id");
-        model.addColumn("Product");
-        model.addColumn("User Description");
-        model.addColumn("Status");
+        return new String[]{"ID", "Product Name", "User description", "Status"};
 
-
-        return model;
     }
+
+    private DefaultTableModel UpdateTableHeader(String[] columnName) {
+        DefaultTableModel dtm = new DefaultTableModel(0, 0);
+        dtm.setColumnIdentifiers(columnName);
+        return dtm;
+    }
+
+    private DefaultTableModel UpdateDataTable(List<Task> taskList){
+        DefaultTableModel dtm = UpdateTableHeader(setTableHeader());
+        List<Integer> idTask = null;
+        int counter = 0;
+        try {
+            idTask = new TaskDao().getIdTask();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        for(Task task : taskList){
+            dtm.addRow(new Object[] {idTask.get(counter),task.getPorduct_name(),task.getUserDesc(),task.getIdStatus()});
+            counter++;
+        }
+
+
+        return dtm;
+
+    }
+
 
     private class UpdateButtonListener implements ActionListener {
         @Override

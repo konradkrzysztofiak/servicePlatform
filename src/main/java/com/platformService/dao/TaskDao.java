@@ -70,4 +70,15 @@ public class TaskDao implements DAO<Task> {
         preparedStatement.executeUpdate();
         preparedStatement.close();
     }
+
+    public List<Integer> getIdTask() throws SQLException {
+        List<Integer> idList = new ArrayList<>();
+        ResultSet resultSet = sqlImplementation.selectQuery("SELECT id FROM task");
+
+        while (resultSet.next()){
+            idList.add(resultSet.getInt("id"));
+        }
+    return idList;
+
+    }
 }
